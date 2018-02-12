@@ -1,11 +1,11 @@
-import daniel from './images/avatars/daniel.jpg';
-import kristy from './images/avatars/kristy.png';
-import veronika from './images/avatars/veronika.jpg';
-import molly from './images/avatars/molly.png';
-import aqua from './images/products/aqua.png';
-import rose from './images/products/rose.png';
-import steel from './images/products/steel.png';
-import yellow from './images/products/yellow.png';
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  return images;
+}
+
+// set true to search subdirectories
+const images = importAll(require.context('./images', true, /\.(png|jpe?g|svg)$/));
 
 function generateVoteCount() {
   return Math.floor((Math.random() * 50) + 15);
@@ -18,8 +18,8 @@ const products = [
     description: 'On-demand sand castle construction expertise.',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: daniel,
-    productImageUrl: aqua
+    submitterAvatarUrl: images['avatars/daniel.jpg'],
+    productImageUrl: images['products/aqua.png']
   },
   {
     id: 2,
@@ -27,8 +27,8 @@ const products = [
     description: 'Earn points when your favorite politicians pass legislation.',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: kristy,
-    productImageUrl: rose
+    submitterAvatarUrl: images['avatars/kristy.png'],
+    productImageUrl: images['products/rose.png']
   },
   {
     id: 3,
@@ -36,8 +36,8 @@ const products = [
     description: 'We already have your measurements and shipping address.',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: veronika,
-    productImageUrl: steel
+    submitterAvatarUrl: images['avatars/veronika.jpg'],
+    productImageUrl: images['products/steel.png']
   },
   {
     id: 4,
@@ -45,8 +45,8 @@ const products = [
     description: 'High-minded or absent-minded? You decide.',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: molly,
-    productImageUrl: yellow
+    submitterAvatarUrl: images['avatars/molly.png'],
+    productImageUrl: images['products/yellow.png']
   },
 ];
 
